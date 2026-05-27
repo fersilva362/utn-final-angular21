@@ -1,0 +1,35 @@
+<div class="search-container">
+  <div class="search-input-wrapper">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search or start new chat" class="search-input" />
+  </div>
+</div>
+<main class="messages-content">
+  <section class="tiles-section">
+    <div>
+      @for (contact of myContacsLoaded(); track contact.conversation_id) {
+        <div class="message-tile">
+          <img
+            src="https://i.pravatar.cc/300?u=15"
+            class="tile-avatar"
+            width="50"
+            height="50"
+            alt=""
+          />
+          <div class="tile-info">
+            <div class="tile-header">
+              <h4 class="tile-name">{{ contact.participant_name }}</h4>
+              <span class="tile-time">{{ contact.last_message_time }}</span>
+            </div>
+            <p class="tile-message">{{ contact.last_message || 'No messages yet' }}</p>
+          </div>
+        </div>
+
+        <h1>{{ contact.participant_name }}</h1>
+      }
+    </div>
+  </section>
+</main>
+<footer className="sidebar-footer">
+  <button class="add-contact-btn" title="Add new contact">👤+</button>
+</footer>

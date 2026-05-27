@@ -1,0 +1,43 @@
+<div class="form-page-wrapper">
+  <div class="form-card">
+    <div class="profile-preview">
+      <div class="avatar-placeholder">👤</div>
+      <header class="header-form-container">
+        <h2>Add New Contact</h2>
+      </header>
+    </div>
+    <div class="form-container">
+      <form (submit)="loadNewUser()" [formGroup]="register_form">
+        <div class="input-wrapper">
+          <label class="input-label" for="name"> Username </label>
+          <input
+            id="name"
+            type="text"
+            formControlName="username"
+            class="input-container"
+            placeholder="username"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="input-label" for="email"> Email </label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="email"
+            class="input-container"
+          />
+        </div>
+        <button class="login-btn" type="submit">
+          {{ loadingNewUser() ? 'Add Contact' : 'Loading' }}
+        </button>
+      </form>
+    </div>
+    <footer class="form-footer">
+      <p [class.error-message]="errorNewUser()">{{ errorNewUser() }}</p>
+
+      <span> Back to Chats </span>
+    </footer>
+  </div>
+</div>

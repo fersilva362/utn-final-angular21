@@ -1,0 +1,14 @@
+@if (loading()) {
+  <p>loading posts...</p>
+}
+@if (error()) {
+  <p>{{ error() }}</p>
+} @else {
+  <div class="list">
+    @for (item of posts(); track item.id) {
+      <div class="card">
+        <h2>{{ item.title }}</h2>
+      </div>
+    }
+  </div>
+}
