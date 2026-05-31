@@ -8,7 +8,7 @@
   <section class="tiles-section">
     <div>
       @for (contact of myContacsLoaded(); track contact.conversation_id) {
-        <div class="message-tile">
+        <div class="message-tile" (click)="onClick(contact.conversation_id)">
           <img
             src="https://i.pravatar.cc/300?u=15"
             class="tile-avatar"

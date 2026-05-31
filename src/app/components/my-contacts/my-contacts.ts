@@ -20,6 +20,10 @@ export class MyContacts {
     this.errorContacts.set(null);
     this.myContacsLoaded.set(this.client.getContacts());
   }
+  onClick(conversation_id: string) {
+    console.log(conversation_id);
+    console.log(this.client.getMessagesByConversation(conversation_id));
+  }
   constructor() {
     this.getContacts();
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostModel } from '../models/Post';
-import { MyContactModel } from '../models/Contact';
+import { Message, MyContactModel } from '../models/Contact';
 import { myContactsData } from '../utils/data_source';
 
 @Injectable({
@@ -17,6 +17,12 @@ export class Client {
   private myContacts: MyContactModel[] = myContactsData;
   getContacts(): MyContactModel[] {
     return this.myContacts;
+  }
+  getMessagesByConversation(conversation_id: string): Message[] {
+    const contact_by_conversation = this.myContacts.find(
+      (msg) => msg.conversation_id === conversation_id,
+    );
+    return contact_by_conversation?.messages || [];
   }
 }
 

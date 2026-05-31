@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { MyContacts } from '../my-contacts/my-contacts';
+
+@Component({
+  selector: 'app-my-layout',
+  imports: [RouterOutlet, MyContacts],
+  templateUrl: './my-layout.html',
+  styleUrl: './my-layout.css',
+})
+export class MyLayout {}

@@ -1,0 +1,27 @@
+<div class="chat-container">
+  <header class="chat-header">
+    <img src="https://i.pravatar.cc/300?u=100" alt="profile" />
+    <span>participa</span>
+
+    <button class="back-arrow">🔙</button>
+  </header>
+  <main class="chat-main">
+    <div class="message received">content</div>
+    <div class="message sent">"content"</div>
+
+    <!-- {messages.map((msg, index) => {
+              const isSent = msg.sender_id === userId.toString();
+
+              return isSent ? (
+                <SentMessage key={index} content={msg.content} />
+              ) : (
+                <ReceivedMessage key={index} content={msg.content} />
+              );
+            })} -->
+  </main>
+
+  <footer class="chat-footer">
+    <input class="input-chat" placeholder="Type Message" />
+    <button>Send</button>
+  </footer>
+</div>

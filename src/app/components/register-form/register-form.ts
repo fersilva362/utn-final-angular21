@@ -75,7 +75,7 @@ export class RegisterForm {
         email: email,
         last_message: 'No messages yet',
         last_message_time: new Date().toISOString(),
-        //messages: [],
+        messages: [],
       };
 
       this.postContacts.update((prev) => [...prev, newContact]);
