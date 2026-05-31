@@ -1,8 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { myContactsData } from '../../utils/data_source';
 import { MyContactModel } from '../../models/Contact';
 import { Client } from '../../services/client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-contacts',
@@ -10,8 +11,12 @@ import { Client } from '../../services/client';
   templateUrl: './my-contacts.html',
   styleUrl: './my-contacts.css',
 })
-export class MyContacts {
+export class MyContacts implements OnInit {
+  private router = inject(Router);
   private client = inject(Client);
+  ngOnInit(): void {
+    this.getContacts();
+  }
   myContacsLoaded = signal<MyContactModel[]>([]);
   loadingContacts = signal<boolean>(true);
   errorContacts = signal<string | null>(null);
@@ -21,10 +26,6 @@ export class MyContacts {
     this.myContacsLoaded.set(this.client.getContacts());
   }
   onClick(conversation_id: string) {
-    console.log(conversation_id);
-    console.log(this.client.getMessagesByConversation(conversation_id));
-  }
-  constructor() {
-    this.getContacts();
+    this.router.navigate(['/contact', conversation_id]);
   }
 }

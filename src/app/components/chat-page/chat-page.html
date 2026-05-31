@@ -1,23 +1,18 @@
 <div class="chat-container">
   <header class="chat-header">
     <img src="https://i.pravatar.cc/300?u=100" alt="profile" />
-    <span>participa</span>
+    <span>{{ myContactLoaded()?.participant_name }}</span>
 
     <button class="back-arrow">🔙</button>
   </header>
   <main class="chat-main">
-    <div class="message received">content</div>
-    <div class="message sent">"content"</div>
-
-    <!-- {messages.map((msg, index) => {
-              const isSent = msg.sender_id === userId.toString();
-
-              return isSent ? (
-                <SentMessage key={index} content={msg.content} />
-              ) : (
-                <ReceivedMessage key={index} content={msg.content} />
-              );
-            })} -->
+    @for (message of myContactLoaded()?.messages; track message.id) {
+      @if (message.sender_id === '96') {
+        <div class="message received">{{ message.content }}</div>
+      } @else {
+        <div class="message sent">{{ message.content }}</div>
+      }
+    }
   </main>
 
   <footer class="chat-footer">

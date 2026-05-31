@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostModel } from '../models/Post';
@@ -16,26 +16,12 @@ export class Client {
   }
   private myContacts: MyContactModel[] = myContactsData;
   getContacts(): MyContactModel[] {
-    return this.myContacts;
+    return [...this.myContacts];
   }
-  getMessagesByConversation(conversation_id: string): Message[] {
+  getContactByConversation(conversation_id: string): MyContactModel | null {
     const contact_by_conversation = this.myContacts.find(
       (msg) => msg.conversation_id === conversation_id,
     );
-    return contact_by_conversation?.messages || [];
+    return contact_by_conversation || null;
   }
 }
-
-/* [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "qui est esse",
-    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-}] */
