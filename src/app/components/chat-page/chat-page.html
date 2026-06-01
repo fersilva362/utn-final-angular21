@@ -3,7 +3,7 @@
     <img src="https://i.pravatar.cc/300?u=100" alt="profile" />
     <span>{{ myContactLoaded()?.participant_name }}</span>
 
-    <button class="back-arrow">🔙</button>
+    <button class="back-arrow" (click)="navigateToOrigin()">🔙</button>
   </header>
   <main class="chat-main">
     @for (message of myContactLoaded()?.messages; track message.id) {

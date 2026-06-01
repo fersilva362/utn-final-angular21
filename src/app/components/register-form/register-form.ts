@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,6 +9,7 @@ import {
 import { MyContacts } from '../my-contacts/my-contacts';
 import { MyContactModel } from '../../models/Contact';
 import { email } from '@angular/forms/signals';
+import { Client } from '../../services/client';
 
 @Component({
   selector: 'app-register-form',
@@ -17,6 +18,7 @@ import { email } from '@angular/forms/signals';
   styleUrl: './register-form.css',
 })
 export class RegisterForm {
+  private client = inject(Client);
   register_form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -68,18 +70,17 @@ export class RegisterForm {
         ? this.errorNewUser.update((prev) => `${prev}  ${errorsValidationUsername}.`)
         : null;
 
-      const conversation_id = '8b5e6814-f6be-4868-9a3f-51f75b90fb75' + new Date().toISOString;
       const newContact = {
-        conversation_id: conversation_id,
         participant_name: username,
         email: email,
         last_message: 'No messages yet',
         last_message_time: new Date().toISOString(),
         messages: [],
       };
+      this.client.addNewUser(newContact);
 
-      this.postContacts.update((prev) => [...prev, newContact]);
-      console.log(JSON.stringify(this.postContacts()) + ' MyCOntact');
+      /*  this.postContacts.update((prev) => [...prev, newContact]);
+      console.log(JSON.stringify(this.postContacts()) + ' MyCOntact'); */
       /* Fn((prev) => [...prev, newContact]);
       navigate(`/contact/${conversation_id}`, {
         state: { participante: { name: Username } },

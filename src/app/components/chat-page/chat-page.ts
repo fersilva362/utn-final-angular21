@@ -12,7 +12,6 @@ import { Message, MyContactModel } from '../../models/Contact';
 export class ChatPage implements OnInit {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
-
   private client = inject(Client);
 
   ngOnInit(): void {
@@ -27,4 +26,34 @@ export class ChatPage implements OnInit {
   myContactLoaded = signal<MyContactModel | null>(null);
   loadingMessages = signal<boolean>(true);
   errorMessages = signal<string | null>(null);
+  navigateToOrigin() {
+    this.router.navigate(['/']);
+  }
 }
+
+/* const handleSendMessage = (conversation_id) => {
+    if (!inputValue.trim()) return;
+
+    const newMessage = {
+      id: Date.now().toString(),
+      content: inputValue,
+      sender_id: userId.toString(),
+      created_at: new Date().toISOString(),
+    };
+
+    setContacts((prev) =>
+      prev.map((c) => {
+        return c.conversation_id === conversation_id
+          ? {
+              ...c,
+              //last_message: inputValue,
+              last_message_time: new Date().toISOString(),
+              messages: [...messages, newMessage],
+            }
+          : c;
+      }),
+    );
+    setMessages((prev) => [...(prev || []), newMessage]);
+    receiveMessageOtherUser(msg, conversation_id);
+    setInputValue("");
+  }; */

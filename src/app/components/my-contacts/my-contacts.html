@@ -18,18 +18,16 @@
           />
           <div class="tile-info">
             <div class="tile-header">
-              <h4 class="tile-name">{{ contact.participant_name }}</h4>
-              <span class="tile-time">{{ contact.last_message_time }}</span>
+              <h4 class="tile-name">{{ contact.participant_name | capitalizePipe }}</h4>
+              <span class="tile-time">{{ contact.last_message_time | date: 'medium' }}</span>
             </div>
             <p class="tile-message">{{ contact.last_message || 'No messages yet' }}</p>
           </div>
         </div>
-
-        <h1>{{ contact.participant_name }}</h1>
       }
     </div>
   </section>
 </main>
 <footer className="sidebar-footer">
-  <button class="add-contact-btn" title="Add new contact">👤+</button>
+  <button class="add-contact-btn" title="Add new contact" (click)="navigateToForm()">👤+</button>
 </footer>
