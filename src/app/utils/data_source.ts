@@ -8,7 +8,7 @@ export const myContactsData = [
     messages: [
       {
         id: 'a35616be-40b8-428a-a444-44647715b04d',
-        content: 'Soy fer',
+        content: 'Hi Joa!. Do you like it?',
         sender_id: '96',
         created_at: '2025-12-02T02:44:01.258Z',
       },
@@ -23,7 +23,7 @@ export const myContactsData = [
   {
     conversation_id: '8b5e6814-f6be-4868-9a3f-51f75b90fb75',
     participant_name: 'mariela',
-    last_message: 'male',
+    last_message: 'Call me Male',
     last_message_time: '2026-01-19T15:59:23.863Z',
     messages: [
       {
@@ -34,7 +34,7 @@ export const myContactsData = [
       },
       {
         id: 'unique-msg-id-002',
-        content: 'male',
+        content: 'Call me Male',
         sender_id: '102',
         created_at: '2026-01-19T15:59:23.863Z',
       },
@@ -43,8 +43,15 @@ export const myContactsData = [
   {
     conversation_id: 'e9b448dd-6a39-4d52-b743-c05a945317a8',
     participant_name: 'emilia',
-    last_message: 'emi me buscas',
+    last_message: 'Emi... please, text me',
     last_message_time: '2026-01-19T14:58:01.874Z',
-    messages: [],
+    messages: [
+      {
+        id: 'unique-msg-id-00222',
+        content: 'Emi... please, text me',
+        sender_id: '96',
+        created_at: '2026-01-19T15:59:23.863Z',
+      },
+    ],
   },
 ];

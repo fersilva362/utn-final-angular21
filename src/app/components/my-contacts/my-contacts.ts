@@ -6,10 +6,11 @@ import { Client } from '../../services/client';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
+import { SendMessage } from '../send-message/send-message';
 
 @Component({
   selector: 'app-my-contacts',
-  imports: [DatePipe, CapitalizePipePipe],
+  imports: [SendMessage],
   templateUrl: './my-contacts.html',
   styleUrl: './my-contacts.css',
 })

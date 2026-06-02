@@ -1,13 +1,13 @@
 <div class="chat-container">
   <header class="chat-header">
     <img src="https://i.pravatar.cc/300?u=100" alt="profile" />
-    <span>{{ myContactLoaded()?.participant_name }}</span>
+    <span>{{ myTestLoaded()?.participant_name }}</span>
 
     <button class="back-arrow" (click)="navigateToOrigin()">🔙</button>
   </header>
   <main class="chat-main">
-    @for (message of myContactLoaded()?.messages; track message.id) {
-      @if (message.sender_id === '96') {
+    @for (message of myTestLoaded()?.messages; track message.id) {
+      @if (message.sender_id !== '96') {
         <div class="message received">{{ message.content }}</div>
       } @else {
         <div class="message sent">{{ message.content }}</div>
@@ -16,7 +16,7 @@
   </main>
 
   <footer class="chat-footer">
-    <input class="input-chat" placeholder="Type Message" />
-    <button>Send</button>
+    <input class="input-chat" placeholder="Type Message" [(ngModel)]="text" />
+    <button (click)="sendMessage(myTestLoaded()?.conversation_id || null)">Send</button>
   </footer>
 </div>
