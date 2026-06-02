@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { myContactsData } from '../../utils/data_source';
 import { MyContactModel } from '../../models/Contact';
@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
 import { SendMessage } from '../send-message/send-message';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-my-contacts',
-  imports: [SendMessage],
+  imports: [SendMessage, FormsModule],
   templateUrl: './my-contacts.html',
   styleUrl: './my-contacts.css',
 })
@@ -24,6 +25,15 @@ export class MyContacts {
   loadingContacts = signal<boolean>(true);
   errorContacts = signal<string | null>(null);
   myContacsLoaded = computed(() => this.client.myShareContacts());
+
+  text = '';
+  searchedContact = computed(() => this.client.mySearchContact());
+  handleSearchContact() {
+    if (this.text.trim()) {
+      this.client.handleSearch(this.text);
+      this.text = '';
+    }
+  }
 
   /* getContacts(): void {
     this.loadingContacts.set(false);

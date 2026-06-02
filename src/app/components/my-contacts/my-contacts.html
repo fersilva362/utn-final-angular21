@@ -1,7 +1,12 @@
 <div class="search-container">
-  <div class="search-input-wrapper">
+  <div class="search-input-wrapper" (click)="handleSearchContact()">
     <span class="search-icon">🔍</span>
-    <input type="text" placeholder="Search or start new chat" class="search-input" />
+    <input
+      type="text"
+      [(ngModel)]="text"
+      placeholder="Search or start new chat"
+      class="search-input"
+    />
   </div>
 </div>
 <main class="messages-content">

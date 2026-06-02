@@ -17,6 +17,8 @@ export class Client {
   private myContacts = signal<MyContactModel[]>(myContactsData);
   myShareContacts = this.myContacts;
 
+  mySearchContact = signal<MyContactModel | null>(null);
+
   getContacts(): MyContactModel[] {
     console.log(this.myContacts());
     return [...this.myContacts()];
@@ -27,7 +29,6 @@ export class Client {
     );
 
     this.myContactFiltered.set(contact_by_conversation || null);
-    console.log('');
 
     /* return contact_by_conversation || null;;*/
   }
@@ -55,9 +56,22 @@ export class Client {
       }),
     );
   }
+  handleSearch(text: string): void {
+    const searchContact = [...this.myContacts()].find(({ participant_name }) =>
+      participant_name.includes(text),
+    );
+
+    if (!searchContact) {
+      this.mySearchContact.set(null);
+    }
+    console.log(searchContact);
+    this.mySearchContact.set(searchContact!);
+  }
 }
 
 /*  const handleSearch = (e) => {
+
+  }, [contacts, searchInput]);
     if (e.key !== "Enter" || !searchInput.trim()) {
       setResultSearch(null);
       return;
