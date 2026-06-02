@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empty-page',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './empty-page.html',
   styleUrl: './empty-page.css',
 })
-export class EmptyPage {}
+export class EmptyPage {
+  private router = inject(Router);
+  navigateToForm() {
+    this.router.navigate(['/add']);
+  }
+}

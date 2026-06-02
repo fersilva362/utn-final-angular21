@@ -10,15 +10,17 @@ import { MyContacts } from '../my-contacts/my-contacts';
 import { MyContactModel } from '../../models/Contact';
 import { email } from '@angular/forms/signals';
 import { Client } from '../../services/client';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register-form.html',
   styleUrl: './register-form.css',
 })
 export class RegisterForm {
   private client = inject(Client);
+  private router = inject(Router);
   register_form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
