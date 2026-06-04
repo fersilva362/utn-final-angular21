@@ -1,17 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Post } from './post';
+import { ChatPage } from './chat-page';
+import { provideRouter } from '@angular/router';
 
-describe('Post', () => {
-  let component: Post;
-  let fixture: ComponentFixture<Post>;
+describe('ChatPage', () => {
+  let component: ChatPage;
+  let fixture: ComponentFixture<ChatPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Post],
+      imports: [ChatPage],
+      providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Post);
+    fixture = TestBed.createComponent(ChatPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

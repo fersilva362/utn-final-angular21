@@ -28,19 +28,16 @@ export class ChatPage implements OnInit {
       this.loadingMessages.set(false);
       this.errorMessages.set(null);
       this.client.getContactByConversation(conversation_id);
-      /* this.myContactLoaded.set(this.client.getContactByConversation(conversation_id!) || null); */
     });
   }
 
   text: string = '';
   userId: string = '96';
-
   myContactLoaded = signal<MyContactModel | null>(null);
-
   myTestLoaded = computed(() => this.client.myContactFiltered());
-
   loadingMessages = signal<boolean>(true);
   errorMessages = signal<string | null>(null);
+
   navigateToOrigin() {
     this.router.navigate(['/']);
   }
@@ -56,7 +53,6 @@ export class ChatPage implements OnInit {
       this.client.addNewMessage(newMessage, conversation_id);
       this.client.getContactByConversation(conversation_id);
     }
-
     this.text = '';
   }
 }

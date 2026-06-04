@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
-import { MyContacts } from '../my-contacts/my-contacts';
+import { MyContacts } from '../../pages/my-contacts/my-contacts';
 import { MyContactModel } from '../../models/Contact';
 import { email } from '@angular/forms/signals';
 import { Client } from '../../services/client';
@@ -20,10 +20,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class RegisterForm {
   private client = inject(Client);
-  private router = inject(Router);
   register_form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     username: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
   errorNewUser = signal<string>('');
@@ -59,7 +57,6 @@ export class RegisterForm {
 
   loadNewUser(): void {
     const { username, email } = this.register_form.value;
-
     try {
       this.errorNewUser.set('');
       this.loadingNewUser.set(false);
@@ -71,7 +68,6 @@ export class RegisterForm {
       errorsValidationUsername
         ? this.errorNewUser.update((prev) => `${prev}  ${errorsValidationUsername}.`)
         : null;
-
       const newContact = {
         participant_name: username,
         email: email,
@@ -80,13 +76,6 @@ export class RegisterForm {
         messages: [],
       };
       this.client.addNewUser(newContact);
-
-      /*  this.postContacts.update((prev) => [...prev, newContact]);
-      console.log(JSON.stringify(this.postContacts()) + ' MyCOntact'); */
-      /* Fn((prev) => [...prev, newContact]);
-      navigate(`/contact/${conversation_id}`, {
-        state: { participante: { name: Username } },
-      }); */
     } catch (error) {
       this.errorNewUser.set(error instanceof Error ? error.message : 'Unknown Error');
     } finally {

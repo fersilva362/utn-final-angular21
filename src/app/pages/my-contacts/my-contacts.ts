@@ -6,7 +6,7 @@ import { Client } from '../../services/client';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
-import { SendMessage } from '../send-message/send-message';
+import { SendMessage } from '../../components/send-message/send-message';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,15 +17,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class MyContacts {
   private router = inject(Router);
-  client = inject(Client);
-  /*  ngOnInit(): void {
-    this.getContacts();
-  } */
-  /* myContacsLoaded = signal<MyContactModel[]>([]); */
+  private client = inject(Client);
+
   loadingContacts = signal<boolean>(true);
   errorContacts = signal<string | null>(null);
   myContacsLoaded = computed(() => this.client.myShareContacts());
-
   text = '';
   searchedContact = computed(() => this.client.mySearchContact());
   handleSearchContact() {
@@ -34,12 +30,6 @@ export class MyContacts {
       this.text = '';
     }
   }
-
-  /* getContacts(): void {
-    this.loadingContacts.set(false);
-    this.errorContacts.set(null);
-    this.myContacsLoaded.set(this.client.getContacts());
-  } */
   onClick(conversation_id: string) {
     this.router.navigate(['/contact', conversation_id]);
   }
