@@ -1,3 +1,11 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Spans full 100vh from :host */
+  width: 100%;
+  overflow: hidden; /* Prevents the whole screen from having dual scrollbars */
+  background-color: #ffffff;
+}
 .messages-container {
   background-color: #0046d5;
   height: 100%;
@@ -18,6 +26,7 @@
 .messages-content {
   background-color: white;
   flex: 1;
+
   padding: 20px 0;
   overflow-y: auto;
 }
@@ -129,7 +138,7 @@
 }
 
 .search-icon {
-  font-size: 14px;
+  font-size: 18px;
   color: #667781;
   user-select: none;
 }
@@ -139,7 +148,7 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
   color: #111b21;
 }
 .search-error {

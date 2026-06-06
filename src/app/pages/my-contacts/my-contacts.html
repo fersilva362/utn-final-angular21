@@ -1,23 +1,66 @@
-<div class="search-container">
-  <div class="search-input-wrapper" (click)="handleSearchContact()">
-    <span class="search-icon">🔍</span>
-    <input
-      type="text"
-      [(ngModel)]="text"
-      placeholder="Search or start new chat"
-      class="search-input"
-    />
-  </div>
-</div>
-<main class="messages-content">
-  <section class="tiles-section">
-    <div>
-      @for (contact of myContacsLoaded(); track contact.conversation_id) {
-        <app-send-message [contact]="contact" />
-      }
+<div class="contact-container">
+  <div class="search-container">
+    <div class="search-input-wrapper" (click)="handleSearchContact()">
+      <span class="search-icon">🔍</span>
+      <input type="text" [(ngModel)]="text" placeholder="Search for contact" class="search-input" />
     </div>
-  </section>
-</main>
-<footer className="sidebar-footer">
-  <button class="add-contact-btn" title="Add new contact" (click)="navigateToForm()">👤+</button>
-</footer>
+  </div>
+  <main class="messages-content">
+    <!--  @if(searchedContact) {<section class="recent-section">
+      <p class="recent-title"> Your Search </p>
+            <div class="recent-list">
+              {!resultSearch ? undefined : resultSearch.length == 0 ? (
+                <div class="search-error">
+                  ⚠️ No results found. Please try a different keyword.
+                </div>
+              ) : (
+                resultSearch.map((contact) => {
+                  const url =
+                    "https://i.pravatar.cc/300?u=" + contact.conversation_id;
+                  return (
+                    <RecentContact
+                      url={url}
+                      key={contact.conversation_id}
+                      name={contact.participant_name}
+                    />
+                  );
+                })
+              )}
+            </div>
+    </section>} -->
+    <section class="tiles-section">
+      <div>
+        @for (contact of myContacsLoaded(); track contact.conversation_id) {
+          <app-send-message [contact]="contact" />
+        }
+      </div>
+    </section>
+  </main>
+  <footer className="sidebar-footer">
+    <button class="add-contact-btn" title="Add new contact" (click)="navigateToForm()">👤+</button>
+  </footer>
+</div>
+
+<!-- <section className="recent-section">
+            {/* Se podria hacer aca un toggle entre resulSearch & contacts para no duplicar code */}
+            <p className="recent-title"> Your Search </p>
+            <div className="recent-list">
+              {!resultSearch ? undefined : resultSearch.length == 0 ? (
+                <div className="search-error">
+                  ⚠️ No results found. Please try a different keyword.
+                </div>
+              ) : (
+                resultSearch.map((contact) => {
+                  const url =
+                    "https://i.pravatar.cc/300?u=" + contact.conversation_id;
+                  return (
+                    <RecentContact
+                      url={url}
+                      key={contact.conversation_id}
+                      name={contact.participant_name}
+                    />
+                  );
+                })
+              )}
+            </div>
+          </section> -->

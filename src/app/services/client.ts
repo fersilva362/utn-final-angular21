@@ -19,7 +19,7 @@ export class Client {
     this.myContactFiltered.set(contact_by_conversation || null);
   }
   addNewUser(user_raw: Omit<MyContactModel, 'conversation_id'>): void {
-    const conversation_id = '8b5e6814-f6be-4868-9a3f-51f75b90fb75' + new Date().toISOString;
+    const conversation_id = '8b5e6814-f6be-4868-9a3f-51f75b90fb75' + new Date().toISOString();
     const newContact = { ...user_raw, conversation_id };
     this.myContacts.update((prev) => [...prev, newContact]);
   }
@@ -45,5 +45,6 @@ export class Client {
       this.mySearchContact.set(null);
     }
     this.mySearchContact.set(searchContact!);
+    console.log(this.mySearchContact());
   }
 }

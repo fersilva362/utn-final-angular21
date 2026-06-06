@@ -4,6 +4,7 @@ export const myContactsData = [
     participant_name: 'joaquin',
     last_message: 'Yes, it is nice',
     last_message_time: '2026-01-19T19:21:00.088Z',
+    status: 'online',
 
     messages: [
       {
@@ -25,6 +26,7 @@ export const myContactsData = [
     participant_name: 'mariela',
     last_message: 'Call me Male',
     last_message_time: '2026-01-19T15:59:23.863Z',
+    status: 'online',
     messages: [
       {
         id: 'unique-msg-id-001',
@@ -45,6 +47,7 @@ export const myContactsData = [
     participant_name: 'emilia',
     last_message: 'Emi... please, text me',
     last_message_time: '2026-01-19T14:58:01.874Z',
+    status: 'offline',
     messages: [
       {
         id: 'unique-msg-id-00222',

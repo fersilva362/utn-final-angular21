@@ -27,6 +27,7 @@ export class MyContacts {
   handleSearchContact() {
     if (this.text.trim()) {
       this.client.handleSearch(this.text);
+
       this.text = '';
     }
   }

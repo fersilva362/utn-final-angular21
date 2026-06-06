@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { MyContactModel } from '../../models/Contact';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
 
 @Component({
   selector: 'app-send-message',
-  imports: [DatePipe, CapitalizePipePipe],
+  imports: [DatePipe, CapitalizePipePipe, CommonModule],
   templateUrl: './send-message.html',
   styleUrl: './send-message.css',
 })

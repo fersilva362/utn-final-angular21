@@ -2,13 +2,29 @@
   <div>Contact Not Found</div>
 } @else {
   <div class="message-tile" (click)="onClick(contact.conversation_id)">
-    <img src="https://i.pravatar.cc/300?u=15" class="tile-avatar" width="50" height="50" alt="" />
+    <div class="avatar-container">
+      <img
+        [src]="'https://i.pravatar.cc/300?u=15' + contact.conversation_id"
+        class="tile-avatar"
+        width="50"
+        height="50"
+        alt=""
+      />
+      <span class="status-badge" [ngClass]="false ? 'online' : 'offline'"></span>
+    </div>
+
     <div class="tile-info">
       <div class="tile-header">
         <h4 class="tile-name">{{ contact.participant_name | capitalizePipe }}</h4>
-        <span class="tile-time">{{ contact.last_message_time | date: 'medium' }}</span>
+        <span class="tile-time">{{ contact.last_message_time | date: 'shortTime' }}</span>
       </div>
-      <p class="tile-message">{{ contact.last_message || 'No messages yet' }}</p>
+      <div class="tile-body">
+        <p class="tile-message">{{ contact.last_message || 'No messages yet' }}</p>
+        <div class="status-container">
+          <span class="status-dot" [ngClass]="contact.status"></span>
+          <span class="status-text">{{ contact.status }}</span>
+        </div>
+      </div>
     </div>
   </div>
 }

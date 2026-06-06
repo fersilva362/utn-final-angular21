@@ -75,7 +75,10 @@ export class RegisterForm {
         last_message_time: new Date().toISOString(),
         messages: [],
       };
-      this.client.addNewUser(newContact);
+      if (!this.register_form.invalid) {
+        this.client.addNewUser(newContact);
+        this.register_form.reset();
+      }
     } catch (error) {
       this.errorNewUser.set(error instanceof Error ? error.message : 'Unknown Error');
     } finally {
