@@ -11,10 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from '../../services/client';
 import { Message, MyContactModel } from '../../models/Contact';
 import { FormsModule } from '@angular/forms';
+import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
 
 @Component({
   selector: 'app-chat-page',
-  imports: [FormsModule],
+  imports: [FormsModule, CapitalizePipePipe],
   templateUrl: './chat-page.html',
   styleUrl: './chat-page.css',
 })

@@ -1,15 +1,16 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   background-color: #f5f7fb;
   width: 100%;
 }
 
 .chat-header {
   display: flex;
-  align-items: flex-start;
-  padding: 10px 20px;
+  align-items: center;
+  padding: 20px;
+  border: 0;
   background-color: #0046d5;
   color: white;
   gap: 12px;
@@ -18,8 +19,8 @@
 }
 
 .chat-header img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
@@ -27,7 +28,7 @@
 .chat-header span {
   flex: 1;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 20px;
 }
 
 .chat-main {
@@ -45,7 +46,7 @@
   max-width: 75%;
   padding: 12px 16px;
   border-radius: 18px;
-  font-size: 0.95rem;
+  font-size: 18px;
   line-height: 1.4;
   word-break: break-word;
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
@@ -55,13 +56,14 @@
   align-self: flex-end;
   background-color: #0046d5;
   color: #ffffff;
+
   border-bottom-right-radius: 4px;
 }
 
 .received {
   align-self: flex-start;
   background-color: #ffffff;
-  color: #111b21;
+  color: 'black';
   border-bottom-left-radius: 4px;
   border: 1px solid #e9edef;
 }
@@ -79,6 +81,7 @@
   display: flex;
   gap: 10px;
   border-top: 1px solid #eee;
+  font-size: 18px;
 }
 
 .chat-footer input {
@@ -88,6 +91,8 @@
   border-radius: 25px;
   outline: none;
   background: #f1f1f1;
+  color: black;
+  font-size: 18px;
 }
 
 .chat-footer button {
@@ -97,7 +102,8 @@
   padding: 10px 25px;
   border-radius: 25px;
   cursor: pointer;
-  font-weight: bold;
+
+  font-size: 16px;
 }
 @media (max-width: 768px) {
   .chat-header {
@@ -121,7 +127,7 @@
   border: none;
   color: white;
   filter: brightness(0) invert(1);
-  font-size: 1.5rem;
+  font-size: 30px;
   padding-right: 10px;
   cursor: pointer;
 }
