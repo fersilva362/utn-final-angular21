@@ -41,10 +41,11 @@ export class Client {
     const searchContact = [...this.myContacts()].find(({ participant_name }) =>
       participant_name.includes(text),
     );
+
     if (!searchContact) {
       this.mySearchContact.set(null);
+    } else {
+      this.mySearchContact.set(searchContact!);
     }
-    this.mySearchContact.set(searchContact!);
-    console.log(this.mySearchContact());
   }
 }

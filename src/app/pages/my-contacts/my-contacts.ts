@@ -21,18 +21,24 @@ export class MyContacts {
 
   loadingContacts = signal<boolean>(true);
   errorContacts = signal<string | null>(null);
+  errorSearchBar = signal<string | null>(null);
   myContacsLoaded = computed(() => this.client.myShareContacts());
   text = '';
+
   searchedContact = computed(() => this.client.mySearchContact());
   handleSearchContact() {
+    this.errorSearchBar.set(null);
     if (this.text.trim()) {
-      this.client.handleSearch(this.text);
-
+      this.client.handleSearch(this.text.trim());
+    } else {
+      this.errorSearchBar.set('⚠️ No results found. Please try a different keyword.');
       this.text = '';
     }
   }
-  onClick(conversation_id: string) {
-    this.router.navigate(['/contact', conversation_id]);
+  onClick(conversation_id: string, urlPhoto: string) {
+    this.router.navigate(['/contact', conversation_id], {
+      state: { urlPhoto: urlPhoto },
+    });
   }
   navigateToForm() {
     this.router.navigate(['/add']);

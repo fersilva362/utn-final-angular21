@@ -5,6 +5,7 @@ export interface MyContactModel {
   last_message_time: string;
   messages: Message[];
   status?: string;
+  urlPhoto?: string;
 }
 export interface Message {
   id: string;

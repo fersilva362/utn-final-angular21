@@ -73,6 +73,9 @@ export class RegisterForm {
         email: email,
         last_message: 'No messages yet',
         last_message_time: new Date().toISOString(),
+        urlPhoto:
+          'https://i.pravatar.cc/300?u=1540ac9d93-9b08-45f4-8bdf-7d2fd55c5e00' +
+          new Date().toString(),
         messages: [],
       };
       if (!this.register_form.invalid) {

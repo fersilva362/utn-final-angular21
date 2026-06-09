@@ -1,6 +1,6 @@
 <div class="chat-container">
   <header class="chat-header">
-    <img src="https://i.pravatar.cc/300?u=100" alt="profile" />
+    <img [src]="myTestLoaded()?.urlPhoto" alt="profile" />
     <span>{{ myTestLoaded()?.participant_name! | capitalizePipe }}</span>
 
     <button class="back-arrow" (click)="navigateToOrigin()">🔙</button>

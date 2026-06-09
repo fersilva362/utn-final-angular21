@@ -3,13 +3,7 @@
 } @else {
   <div class="message-tile" (click)="onClick(contact.conversation_id)">
     <div class="avatar-container">
-      <img
-        [src]="'https://i.pravatar.cc/300?u=15' + contact.conversation_id"
-        class="tile-avatar"
-        width="50"
-        height="50"
-        alt=""
-      />
+      <img [src]="contact.urlPhoto" class="tile-avatar" width="50" height="50" alt="" />
       <span class="status-badge" [ngClass]="false ? 'online' : 'offline'"></span>
     </div>
 
