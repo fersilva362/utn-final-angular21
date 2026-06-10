@@ -22,7 +22,7 @@ import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
 export class ChatPage implements OnInit {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
-  private client = inject(Client);
+  client = inject(Client);
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({ conversation_id }) => {
@@ -34,8 +34,11 @@ export class ChatPage implements OnInit {
 
   text: string = '';
   userId: string = '96';
-  myContactLoaded = signal<MyContactModel | null>(null);
-  myTestLoaded = computed(() => this.client.myContactFiltered());
+
+  myTestLoaded = computed(() => {
+    return this.client.myContactFiltered();
+  });
+
   loadingMessages = signal<boolean>(true);
   errorMessages = signal<string | null>(null);
 

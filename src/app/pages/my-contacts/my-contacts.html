@@ -2,36 +2,38 @@
   <div class="search-container">
     <div class="search-input-wrapper" (click)="handleSearchContact()">
       <span class="search-icon">🔍</span>
-      <input type="text" [(ngModel)]="text" placeholder="Search for contact" class="search-input" />
+      <input
+        type="text"
+        [(ngModel)]="text"
+        #searchBar="ngModel"
+        placeholder="Search for contact"
+        class="search-input"
+      />
     </div>
   </div>
   <main class="messages-content">
-    @if (searchedContact()) {
+    @if (searchBar.touched && !searchedContact()) {
+      <div class="search-error">⚠️ No results found. Please try a different keyword.</div>
+    } @else if (searchedContact()) {
       <section class="recent-section">
-        @if (true) {
-          <div class="search-error">⚠️ No results found. Please try a different keyword.</div>
-        } @else {
-          <p class="recent-title">Your Search</p>
-          <div class="recent-list">
-            <div class="avatar-container">
-              <img
-                [src]="
-                  'https://i.pravatar.cc/300?u=15' + (searchedContact()?.conversation_id || 111)
-                "
-                class="tile-avatar"
-                width="50"
-                height="50"
-                alt=""
-              />
-            </div>
+        <p class="recent-title">Your Search</p>
+        <div class="recent-list">
+          <div class="avatar-container">
+            <img
+              [src]="searchedContact()?.urlPhoto"
+              class="tile-avatar"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </div>
 
-            <div class="tile-info">
-              <div class="tile-header">
-                <h4 class="tile-name">{{ searchedContact()?.participant_name || 'unknown' }}</h4>
-              </div>
+          <div class="tile-info">
+            <div class="tile-header">
+              <h4 class="tile-name">{{ searchedContact()?.participant_name || 'unknown' }}</h4>
             </div>
           </div>
-        }
+        </div>
       </section>
     }
     <section class="tiles-section">

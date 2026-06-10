@@ -30,9 +30,6 @@ describe('RegisterForm', () => {
   });
   it('btn should send form when clicked', () => {
     const sendBtn = fixture.nativeElement.querySelector('#send-btn');
-
-    console.log(fixture.nativeElement.querySelector('span').textContent);
-
     sendBtn.click();
 
     expect(component.loadingNewUser()).toBeTruthy();
