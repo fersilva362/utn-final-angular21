@@ -1,39 +1,43 @@
 <div class="contact-container">
   <div class="search-container">
-    <div class="search-input-wrapper" (click)="handleSearchContact()">
-      <span class="search-icon">🔍</span>
+    <div class="search-input-wrapper">
+      <span class="search-icon" (click)="handleSearchContact()">🔍</span>
       <input
         type="text"
         [(ngModel)]="text"
-        #searchBar="ngModel"
+        (keyup.enter)="handleSearchContact()"
+        (input)="onInputChange()"
         placeholder="Search for contact"
         class="search-input"
       />
     </div>
   </div>
   <main class="messages-content">
-    @if (searchBar.touched && !searchedContact()) {
-      <div class="search-error">⚠️ No results found. Please try a different keyword.</div>
-    } @else if (searchedContact()) {
+    @if (hasSearched()) {
       <section class="recent-section">
-        <p class="recent-title">Your Search</p>
-        <div class="recent-list">
-          <div class="avatar-container">
-            <img
-              [src]="searchedContact()?.urlPhoto"
-              class="tile-avatar"
-              width="50"
-              height="50"
-              alt=""
-            />
-          </div>
-
-          <div class="tile-info">
-            <div class="tile-header">
-              <h4 class="tile-name">{{ searchedContact()?.participant_name || 'unknown' }}</h4>
+        @if (errorSearchBar()) {
+          <div class="search-error">{{ errorSearchBar() }}</div>
+        } @else if (!errorSearchBar() && !searchedContact()) {
+          <div class="search-error">⚠️ No results found. Please try a different keyword.</div>
+        } @else {
+          <p class="recent-title">Your Search</p>
+          <div class="recent-list">
+            <div class="avatar-container">
+              <img
+                [src]="searchedContact()?.urlPhoto"
+                class="tile-avatar"
+                width="50"
+                height="50"
+                alt=""
+              />
+            </div>
+            <div class="tile-info">
+              <div class="tile-header">
+                <h4 class="tile-name">{{ searchedContact()?.participant_name || 'unknown' }}</h4>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </section>
     }
     <section class="tiles-section">
@@ -48,27 +52,3 @@
     <button class="add-contact-btn" title="Add new contact" (click)="navigateToForm()">👤+</button>
   </footer>
 </div>
-
-<!-- <section className="recent-section">
-           
-            <p className="recent-title"> Your Search </p>
-            <div className="recent-list">
-              {!resultSearch ? undefined : resultSearch.length == 0 ? (
-                <div className="search-error">
-                  ⚠️ No results found. Please try a different keyword.
-                </div>
-              ) : (
-                resultSearch.map((contact) => {
-                  const url =
-                    "https://i.pravatar.cc/300?u=" + contact.conversation_id;
-                  return (
-                    <RecentContact
-                      url={url}
-                      key={contact.conversation_id}
-                      name={contact.participant_name}
-                    />
-                  );
-                })
-              )}
-            </div>
-          </section> -->
