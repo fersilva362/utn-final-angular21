@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-my-contacts',
-  imports: [SendMessage, FormsModule],
+  imports: [SendMessage, FormsModule, CapitalizePipePipe],
   templateUrl: './my-contacts.html',
   styleUrl: './my-contacts.css',
 })

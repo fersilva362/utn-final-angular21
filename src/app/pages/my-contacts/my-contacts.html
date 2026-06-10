@@ -33,7 +33,9 @@
             </div>
             <div class="tile-info">
               <div class="tile-header">
-                <h4 class="tile-name">{{ searchedContact()?.participant_name || 'unknown' }}</h4>
+                <h3 class="tile-name">
+                  {{ searchedContact()?.participant_name || 'unknown' | capitalizePipe }}
+                </h3>
               </div>
             </div>
           </div>

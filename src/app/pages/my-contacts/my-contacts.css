@@ -38,7 +38,7 @@
 .recent-title {
   color: #414a4c;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 16px;
   margin-bottom: 15px;
 }
 
@@ -103,7 +103,7 @@
 
 .tile-name {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 14px;
   color: #1a1a1a;
 }
 
