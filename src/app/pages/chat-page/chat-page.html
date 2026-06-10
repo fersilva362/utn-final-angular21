@@ -13,6 +13,9 @@
         <div class="message sent">{{ message.content }}</div>
       }
     }
+    @if (isDotsActiveChat()) {
+      <app-dots-chats />
+    }
   </main>
 
   <footer class="chat-footer">

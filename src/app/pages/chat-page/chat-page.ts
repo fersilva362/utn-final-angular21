@@ -12,10 +12,11 @@ import { Client } from '../../services/client';
 import { Message, MyContactModel } from '../../models/Contact';
 import { FormsModule } from '@angular/forms';
 import { CapitalizePipePipe } from '../../pipes/capitalize-pipe-pipe';
+import { DotsChats } from '../../components/dots-chats/dots-chats';
 
 @Component({
   selector: 'app-chat-page',
-  imports: [FormsModule, CapitalizePipePipe],
+  imports: [FormsModule, CapitalizePipePipe, DotsChats],
   templateUrl: './chat-page.html',
   styleUrl: './chat-page.css',
 })
@@ -34,7 +35,7 @@ export class ChatPage implements OnInit {
 
   text: string = '';
   userId: string = '96';
-
+  isDotsActiveChat = computed(() => this.client.isDotsActive());
   myTestLoaded = computed(() => {
     return this.client.myContactFiltered();
   });

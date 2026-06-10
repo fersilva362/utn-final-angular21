@@ -12,6 +12,7 @@ export class Client {
 
   //reactive variable for search bar
   mySearchContact = signal<MyContactModel | null>(null);
+  isDotsActive = signal<boolean>(false);
 
   myContactFiltered = signal<MyContactModel | null>(null);
   getContactByConversation(conversation_id: string): any {
@@ -47,7 +48,10 @@ export class Client {
   }
   receiveMessageOtherUser = (msgReceived: any, conversation_id: string) => {
     msgReceived = { ...msgReceived, conversation_id };
-    setTimeout(() => {
+
+    this.isDotsActive.set(true);
+    const timer = setTimeout(() => {
+      this.isDotsActive.set(false);
       this.myContacts.update((prev) =>
         prev.map((c) => {
           return c.conversation_id === msgReceived.conversation_id
@@ -67,7 +71,7 @@ export class Client {
         }
         return { ...prev, messages: [...prev.messages, msgReceived.message] };
       });
-    }, 2000);
+    }, 3000);
   };
 
   handleSearch(text: string): void {
