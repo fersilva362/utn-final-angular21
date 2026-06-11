@@ -88,4 +88,5 @@ export class RegisterForm {
       this.loadingNewUser.set(true);
     }
   }
+  changeIsOpen = () => this.client.isChatOpen.set(false);
 }

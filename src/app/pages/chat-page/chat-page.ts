@@ -30,6 +30,7 @@ export class ChatPage implements OnInit {
       this.loadingMessages.set(false);
       this.errorMessages.set(null);
       this.client.getContactByConversation(conversation_id);
+      this.client.isChatOpen.set(true);
     });
   }
 
@@ -44,6 +45,7 @@ export class ChatPage implements OnInit {
   errorMessages = signal<string | null>(null);
 
   navigateToOrigin() {
+    this.client.isChatOpen.set(false);
     this.router.navigate(['/']);
   }
   sendMessage(conversation_id: string | null) {

@@ -54,6 +54,7 @@ export class MyContacts {
     });
   }
   navigateToForm() {
+    this.client.isChatOpen.set(true);
     this.router.navigate(['/add']);
   }
 }

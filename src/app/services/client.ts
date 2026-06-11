@@ -13,7 +13,7 @@ export class Client {
   //reactive variable for search bar
   mySearchContact = signal<MyContactModel | null>(null);
   isDotsActive = signal<boolean>(false);
-
+  isChatOpen = signal<boolean>(false);
   myContactFiltered = signal<MyContactModel | null>(null);
   getContactByConversation(conversation_id: string): any {
     const contact_by_conversation = this.myContacts().find(
