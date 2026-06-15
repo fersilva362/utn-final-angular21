@@ -21,7 +21,7 @@
           <div class="search-error">⚠️ No results found. Please try a different keyword.</div>
         } @else {
           <p class="recent-title">Your Search</p>
-          <div class="recent-list">
+          <div class="recent-list" (click)="NavigateToChat(searchedContact()?.conversation_id!)">
             <div class="avatar-container">
               <img
                 [src]="searchedContact()?.urlPhoto"

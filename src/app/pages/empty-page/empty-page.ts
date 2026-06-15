@@ -12,4 +12,7 @@ export class EmptyPage {
   navigateToForm() {
     this.router.navigate(['/add']);
   }
+  showAlert() {
+    alert('Document sharing feature coming soon!');
+  }
 }

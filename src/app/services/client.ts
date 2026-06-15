@@ -9,12 +9,14 @@ import { msg } from '../utils/data_other_usr';
 export class Client {
   private myContacts = signal<MyContactModel[]>(myContactsData);
   myShareContacts = this.myContacts;
+  myConversationId = signal<string>('');
 
   //reactive variable for search bar
   mySearchContact = signal<MyContactModel | null>(null);
-  isDotsActive = signal<boolean>(false);
+  isDotsActive = signal<string | null>(null);
   isChatOpen = signal<boolean>(false);
   myContactFiltered = signal<MyContactModel | null>(null);
+
   getContactByConversation(conversation_id: string): any {
     const contact_by_conversation = this.myContacts().find(
       (msg) => msg.conversation_id === conversation_id,
@@ -32,6 +34,7 @@ export class Client {
 
   addNewMessage(newMessage: Message, conversation_id: string) {
     this.isAddingNewMessage = true;
+
     this.myContacts.update((contacts) =>
       contacts.map((c) => {
         return c.conversation_id === conversation_id
@@ -44,14 +47,18 @@ export class Client {
           : c;
       }),
     );
+
     this.receiveMessageOtherUser(msg, conversation_id);
   }
   receiveMessageOtherUser = (msgReceived: any, conversation_id: string) => {
     msgReceived = { ...msgReceived, conversation_id };
 
-    this.isDotsActive.set(true);
+    this.isDotsActive.set(conversation_id);
+
     const timer = setTimeout(() => {
-      this.isDotsActive.set(false);
+      console.log();
+      this.isDotsActive.set(null);
+
       this.myContacts.update((prev) =>
         prev.map((c) => {
           return c.conversation_id === msgReceived.conversation_id
@@ -69,9 +76,13 @@ export class Client {
         if (!prev) {
           return null;
         }
+        if (prev.conversation_id !== conversation_id) {
+          return prev;
+        }
         return { ...prev, messages: [...prev.messages, msgReceived.message] };
       });
     }, 3000);
+    console.log(this.myConversationId() + '  ' + conversation_id);
   };
 
   handleSearch(text: string): void {

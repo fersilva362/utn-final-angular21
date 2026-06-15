@@ -53,6 +53,10 @@ export class MyContacts {
       state: { urlPhoto: urlPhoto },
     });
   }
+
+  NavigateToChat(conversation_id: string) {
+    this.router.navigate(['/contact', conversation_id]);
+  }
   navigateToForm() {
     this.client.isChatOpen.set(true);
     this.router.navigate(['/add']);

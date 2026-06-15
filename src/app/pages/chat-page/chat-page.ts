@@ -31,6 +31,7 @@ export class ChatPage implements OnInit {
       this.errorMessages.set(null);
       this.client.getContactByConversation(conversation_id);
       this.client.isChatOpen.set(true);
+      this.client.myConversationId.set(conversation_id);
     });
   }
 

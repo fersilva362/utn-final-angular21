@@ -13,7 +13,7 @@
         <div class="message sent">{{ message.content }}</div>
       }
     }
-    @if (isDotsActiveChat()) {
+    @if (isDotsActiveChat() === this.client.myConversationId()) {
       <app-dots-chats />
     }
   </main>
